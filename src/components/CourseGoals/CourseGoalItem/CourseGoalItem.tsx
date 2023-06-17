@@ -1,7 +1,7 @@
 import "./CourseGoalItem.css";
 
 const CourseGoalItem = (props: {
-  children: never;
+  children: any;
   id: string;
   onDelete: (id: string) => void;
 }) => {
