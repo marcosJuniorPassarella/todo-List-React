@@ -2,7 +2,7 @@ import "./Button.css";
 
 const Button = (props: {
   type: "button" | "submit" | "reset";
-  onClick: () => void;
+  onClick?: () => void;
   children: any;
 }) => {
   return (
