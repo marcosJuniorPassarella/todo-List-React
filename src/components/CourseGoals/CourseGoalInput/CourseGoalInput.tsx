@@ -19,7 +19,7 @@ const CourseInput = (props: { onAddGoal: (goal: string) => void }) => {
   return (
     <form onSubmit={formSubmitHandler}>
       <div className="form-control">
-        <label>Course Goal</label>
+        <label>Goals to be achieved</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </div>
       <Button type="submit">Add Goal</Button>

@@ -2,8 +2,8 @@ import CourseGoalItem from "../CourseGoalItem/CourseGoalItem";
 import "./CourseGoalList.css";
 
 const CourseGoalList = (props: {
-  items: [{ text: string; id: string }];
-  onDeleteItem: () => void;
+  items: { text: string; id: string }[];
+  onDeleteItem: (goalId: string) => void;
 }) => {
   return (
     <ul className="goal-list">
