@@ -9,6 +9,8 @@ const CourseInput = (props: { onAddGoal: (goal: string) => void }) => {
   const goalInputChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
     const eventTarget = event.currentTarget as HTMLInputElement;
     const eventValue = eventTarget.value;
+
+    eventValue.trim().length > 0 && setIsValid(true);
     setEnteredValue(eventValue);
   };
 
@@ -27,7 +29,14 @@ const CourseInput = (props: { onAddGoal: (goal: string) => void }) => {
         <label style={{ color: !isValid ? "red" : "black" }}>
           Goals to be achieved
         </label>
-        <input type="text" onChange={goalInputChangeHandler} />
+        <input
+          style={{
+            borderColor: !isValid ? "red" : "black",
+            backgroundColor: !isValid ? "salmon" : "transparent",
+          }}
+          type="text"
+          onChange={goalInputChangeHandler}
+        />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>
