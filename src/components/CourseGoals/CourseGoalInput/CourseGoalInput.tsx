@@ -1,6 +1,38 @@
 import { useState } from "react";
 import Button from "../../UI/Button/Button";
 import "./CourseGoalInput.css";
+import styled from "styled-components";
+
+interface Props {
+  invalid: boolean;
+}
+
+const FormControl = styled.div<Props>`
+  margin: 0.5rem 0;
+
+  & label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: ${(props: any) => (props.invalid ? "red" : "black")};
+  }
+
+  & input {
+    display: block;
+    width: 100%;
+    border: 1px solid ${(props: any) => (props.invalid ? "red" : "#ccc")};
+    background: ${(props: any) => (props.invalid ? "#ffd7d7" : "transparent")};
+    font: inherit;
+    line-height: 1.5rem;
+    padding: 0 0.25rem;
+  }
+
+  & input:focus {
+    outline: none;
+    background: #ffe9f8;
+    border-color: #8b005d;
+  }
+`;
 
 const CourseInput = (props: { onAddGoal: (goal: string) => void }) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -25,10 +57,10 @@ const CourseInput = (props: { onAddGoal: (goal: string) => void }) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className={`form-control ${!isValid ? "invalid" : ""}`}>
+      <FormControl invalid={!isValid}>
         <label>Goals to be achieved</label>
         <input type="text" onChange={goalInputChangeHandler} />
-      </div>
+      </FormControl>
       <Button type="submit">Add Goal</Button>
     </form>
   );
